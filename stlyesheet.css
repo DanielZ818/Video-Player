@@ -1,0 +1,87 @@
+body, header {
+    margin: 0;
+    padding: 0;
+}
+
+/* CSS for the menu bar */
+header {
+    padding: .5vh;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+}
+
+nav ul {
+    list-style: none;
+    padding: 10;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s; /* Smooth transition effect */
+}
+
+nav a:hover {
+    color: #888; /* Gray color on hover */
+}
+
+body {
+    background-color: #efefef;
+}
+
+content {
+    display: flex;
+    flex-direction: row;
+}
+
+/* Controls the ratio 4/5 */
+#left-section {
+    flex: 4;
+}
+
+/* Right part (1/5) */
+#right-section {
+    flex: 1;
+}
+
+/* Change the background color of the body sections */
+#left-section {
+    background-color: #de5454; /* Adjust the color as needed */
+    /* min-height: 800px; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#left-top {
+    flex: 3; /* Control ratio */
+    margin: 10px;
+    /* background-color: antiquewhite; */
+    max-height: 700px;
+
+}
+
+#left-down {
+    flex: 1; /* Control ratio */
+    margin: 10px;
+    background-color: yellow;
+    min-height: 100px;
+}
+
+
+
+#right-section {
+    background-color: #3772bb; /* Adjust the color as needed */
+    height: 800px;
+}
+
+#player {
+    max-height: 700px;
+
+}   

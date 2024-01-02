@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="cn">
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+
+<head>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="login.css" />
+</head>
+
+
+<body>
+    <div class="header">
+        <header>
+            <nav>
+                <div class="left">
+                    <a href="#home">主页</a>
+                    <a href="#new">最新</a>
+                    <a href="#randokm">随机</a>
+                    <a href="#category">分类</a>
+                    <a href="#serach">搜索</a>
+
+                </div>
+                <!-- <div class="right">
+                    <a href="login">登陆</a>
+                </div> -->
+            </nav>
+        </header>
+    </div>
+
+
+    <div class="content">
+        <div class="prompt">
+        <!-- <div class="title">登陆</div>
+            <div class="username">用户名</div>
+            <div class="password">密码</div>
+            <div class="otp">验证码</div>
+            <div class="submit">提交</div> -->
+            <form action="/login/password" method="post">
+                <section>
+                    <label for="username">Username</label>
+                    <input id="username" name="username" type="text" autocomplete="username" required autofocus>
+                </section>
+                <section>
+                    <label for="current-password">Password</label>
+                    <input id="current-password" name="password" type="password" autocomplete="current-password" required>
+                </section>
+                <button type="submit">Sign in</button>
+            </form>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>

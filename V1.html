@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css"/>
+    <link rel="stylesheet" href="stlyesheet.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a tabindex="1" href="#">Home</a></li>
+                <!-- <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li> 
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li> -->
+            </ul>
+        </nav>
+    </header>
+
+    <content>
+        <section id="left-section">
+            <div id="left-top">
+                <video id="player" tabindex="0" playsinline controls data-poster="/path/to/poster.jpg">
+                    <source src="SampleVideo.mp4" type="video/mp4" />
+                </video>
+            </div>
+           <div id="left-down">
+
+           </div>
+
+        </section>
+        <div id="right-section">
+            
+        </div>
+    </content>
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="plyr-plugin-thumbnail.js"></script>
+    <script src="plyr-thumbnail-generate.js"></script>
+
+    <script>
+        // Setup the player
+
+        // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
+        // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
+
+        // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
+        // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
+        // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
+
+        const controls = [
+            'play-large', // The large play button in the center
+            // 'restart', // Restart playback
+            // 'rewind', // Rewind by the seek time (default 10 seconds)
+            'play', // Play/pause playback
+            // 'fast-forward', // Fast forward by the seek time (default 10 seconds)
+            'progress', // The progress bar and scrubber for playback and buffering
+            'current-time', // The current time of playback
+            'duration', // The full duration of the media
+            'mute', // Toggle mute
+            'volume', // Volume control
+            // 'captions', // Toggle captions
+            'settings', // Settings menu
+            'pip', // Picture-in-picture (currently Safari only)
+            'airplay', // Airplay (currently Safari only)
+            // 'download', // Show a download button with a link to either the current source or a custom URL you specify in your options
+            'fullscreen' // Toggle fullscreen
+        ];
+
+        const player = new Plyr('#player', {controls, 
+                                            keyboard: { 
+                                                focused: true, 
+                                                global: true 
+                                            },
+                                            thumbnailCreate:{
+                                                after:'download',
+                                                width:220,
+                                                height:170
+                                            },
+                                            thumbnail: {
+                                                enabled:true,
+                                                pic_num: 196,// total thumbnail numbers
+                                                width: 192,// per thumbnail item width
+                                                height: 96,// per thumbnail item height
+                                                col: 14,// per thumbnail image columns
+                                                row: 14,// per thumbnail image rows
+                                                offsetX:0,
+                                                offsetY:0,
+                                                urls: ['SampleVideo.mp4;@;14x14.png'] // thumbnail images
+                                            }                         
+                                        });
+        player.on('enterfullscreen', () => {
+            const playerContainer = document.querySelector('#player');
+            playerContainer.style.maxHeight = '100%';
+        });
+
+        player.on('exitfullscreen', () => {
+            const playerContainer = document.querySelector('#player');
+            playerContainer.style.maxHeight = '700px';
+        });
+
+
+
+        // Function to set the playback speed to 3x
+        function setSpeedTo3x() {
+            player.speed = 5;
+        }
+
+        // Function to set the playback speed to 1x
+        function setSpeedTo1x() {
+            player.speed = 1;
+        }
+
+        // Add an event listener for keydown to set speed to 3x
+        document.addEventListener('keydown', (event) => {
+            // Check for the specific key you want to trigger the speed change (e.g., the "ArrowUp" key)
+            if (event.key === 'd') {
+                setSpeedTo3x();
+            }
+        });
+
+        // Add an event listener for keyup to set speed back to 1x
+        document.addEventListener('keyup', (event) => {
+            // Check for the specific key to reset the speed (e.g., the "ArrowUp" key)
+            if (event.key === 'd') {
+                setSpeedTo1x();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
